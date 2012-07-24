@@ -91,9 +91,6 @@ rm /lib/udev/rules.d/75-persistent-net-generator.rules
 # Add a 2 sec delay to the interface up, to make the dhclient happy
 echo "pre-up sleep 2" >> /etc/network/interfaces
 
-# Remove any temporary work files, including the postinstall.sh script
-rm -f /home/${account}/{*.iso,postinstall*.sh}
-
 ### Compress Image Size
 
 # Zero out the free space to save space in the final image
