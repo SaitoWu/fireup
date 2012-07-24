@@ -75,10 +75,6 @@ echo 'UseDNS no' >> /etc/ssh/sshd_config
 
 ### Clean up
 
-# Remove the build tools to keep things pristine
-apt-get -y autoremove
-apt-get -y clean
-
 # Removing leftover leases and persistent rules
 rm -f /var/lib/dhcp3/*
 
@@ -96,11 +92,6 @@ echo "pre-up sleep 2" >> /etc/network/interfaces
 # Zero out the free space to save space in the final image
 dd if=/dev/zero of=/EMPTY bs=1M
 rm -f /EMPTY
-
-
-### use fire up
-
-puppet apply --modulepath 'manifests/modules' manifests/base.pp
 
 exit
 

@@ -22,6 +22,13 @@ vagrant up
 
 ```bash
 ./install.sh
+git clone git://github.com/SaitoWu/fireup.git
+cd fireup
+git submodule update --init
+
+# edit example variables
+nano manifests/base.pp
+puppet apply --modulepath 'manifests/modules' manifests/base.pp
 ```
 
 ## NOTICE
