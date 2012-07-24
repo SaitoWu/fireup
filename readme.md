@@ -21,7 +21,6 @@ vagrant up
 ### VPS
 
 ```bash
-gem install puppet
 ./install.sh
 ```
 
