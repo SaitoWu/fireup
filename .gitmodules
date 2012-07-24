@@ -1,0 +1,6 @@
+[submodule "manifests/modules/mysql"]
+	path = manifests/modules/mysql
+	url = https://github.com/puppetlabs/puppetlabs-mysql.git
+[submodule "manifests/modules/rvm"]
+	path = manifests/modules/rvm
+	url = https://github.com/blt04/puppet-rvm.git
