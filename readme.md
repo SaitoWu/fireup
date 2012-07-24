@@ -21,10 +21,11 @@ vagrant up
 ### VPS
 
 ```bash
-./install.sh
+apt-get install git-core
 git clone git://github.com/SaitoWu/fireup.git
 cd fireup
 git submodule update --init
+./install.sh
 
 # edit example variables
 nano manifests/base.pp
