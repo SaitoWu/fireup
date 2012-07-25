@@ -10,3 +10,6 @@
 [submodule "manifests/modules/redis"]
 	path = manifests/modules/redis
 	url = https://github.com/example42/puppet-redis.git
+[submodule "manifests/modules/postgresql"]
+	path = manifests/modules/postgresql
+	url = https://github.com/akumria/puppet-postgresql.git
