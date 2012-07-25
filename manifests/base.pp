@@ -1,44 +1,47 @@
 # variables
-$username = 'deployer'
-$usergroup = 'admin'
-$appname = 'example'
-$mysql_root_password = "root"
-$ruby_version = "ruby-1.9.3-p194"
-$nginx_server_name = "localhost"
-$app_root = "/home/$username/$appname"
-$upstream_socket_file = "/tmp/$appname/unicorn.sock"
-$nginx_root = "/home/$username/$appname/public/index.htm"
+$user = { name: 'deployer', group: 'admin'}
+$ruby = { version: 'ruby-1.9.3-p194'}
+$application = { name: 'example', root: "/home/$user['name']/example"}
+$mysql = { root_password: 'root'}
+$nginx = { root: "/home/$user['name']/application['name']/public/index.htm", server_name: 'localhost'}
+$unicorn = { socket: "/tmp/$application['name']/unicorn.sock"}
 
 # user
-user { $username:
+user { $user['name']:
   managehome => true,
   ensure     => present,
   shell      => "/bin/bash",
-  gid        => $usergroup,
-  home       => "/home/$username"
+  gid        => $user['group'],
+  home       => "/home/$user['name']"
 }
 
 # rvm ruby
 include rvm
 
-rvm::system_user { $username: ; }
+rvm::system_user { $user['name']: ; }
 
-rvm_system_ruby { $ruby_version:
+rvm_system_ruby { $ruby['version']:
   ensure => present,
   default_use => true;
 }
 
 rvm_gem { 'bundler':
   ensure => installed,
-  ruby_version => $ruby_version,
-  require => Rvm_system_ruby[ $ruby_version ];
+  ruby_version => $ruby['version'],
+  require => Rvm_system_ruby[ $ruby['version'] ];
 }
 
 # mysql
 class { 'mysql::ruby': }
 class { 'mysql::server':
-  config_hash => { 'root_password' => $mysql_root_password }
+  config_hash => { 'root_password' => $mysql['root_password'] }
 }
+
+# mongodb
+class { 'mongodb': }
+
+# redis
+class { 'redis': }
 
 # unicorn
 file { "/etc/init.d/unicorn":
@@ -56,7 +59,7 @@ file { "/etc/nginx/sites-enabled/default":
   ensure => absent;
 }
 
-file { "/etc/nginx/sites-enabled/$appname":
+file { "/etc/nginx/sites-enabled/$application['name']":
   ensure  => file,
   content => template('base/nginx.conf.erb'),
   require => Package['nginx'];
@@ -67,6 +70,6 @@ service { "nginx":
   enable     => true,
   hasstatus  => true,
   hasrestart => true,
-  subscribe  => File["/etc/nginx/sites-enabled/$appname"],
+  subscribe  => File["/etc/nginx/sites-enabled/$application['name']"],
   require    => Package['nginx']
 }

@@ -1,11 +1,11 @@
 upstream unicorn {
-  server unix:<%= upstream_socket_file %> fail_timeout=0;
+  server unix:<%= unicorn['socket'] %> fail_timeout=0;
 }
 
 server {
   listen 80 default deferred;
-  server_name <%= nginx_server_name %>;
-  root <%= nginx_root %>;
+  server_name <%= nginx['server_name'] %>;
+  root <%= nginx['root'] %>;
   try_files $uri/index.html $uri @unicorn;
 
   location @unicorn {

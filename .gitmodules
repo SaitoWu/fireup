@@ -4,3 +4,9 @@
 [submodule "manifests/modules/rvm"]
 	path = manifests/modules/rvm
 	url = https://github.com/blt04/puppet-rvm.git
+[submodule "manifests/modules/mongodb"]
+	path = manifests/modules/mongodb
+	url = https://github.com/portertech/puppet-mongodb.git
+[submodule "manifests/modules/redis"]
+	path = manifests/modules/redis
+	url = https://github.com/example42/puppet-redis.git

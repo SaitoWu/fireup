@@ -5,8 +5,8 @@ set -e
 
 # Feel free to change any of the following variables for your app:
 TIMEOUT=${TIMEOUT-60}
-APP_ROOT=<%= app_root %>
-PID=<%= upstream_socket_file %>
+APP_ROOT=<%= application['root'] %>
+PID=<%= unicorn['socket'] %>
 CMD="$APP_ROOT/bin/unicorn -D -c $APP_ROOT/config/unicorn.rb -E production"
 action="$1"
 set -u
