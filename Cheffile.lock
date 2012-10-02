@@ -1,0 +1,44 @@
+GIT
+  remote: https://github.com/ctrabold/chef-redis.git
+  ref: master
+  sha: a5686a513d5912a51a4f4cb40f708a4a31cd1707
+  specs:
+    redis (0.0.4)
+
+GIT
+  remote: https://github.com/gchef/nginx-cookbook.git
+  ref: master
+  sha: 18b5176a4ec3fa54d969021b1275ef1e7a6772fc
+  specs:
+    nginx (2.7.3)
+      apt (>= 0.0.0)
+      build-essential (>= 0.0.0)
+
+GIT
+  remote: https://github.com/opscode-cookbooks/apt.git
+  ref: master
+  sha: d9011dcfc4af935a7c5b5be512f90499f08683ba
+  specs:
+    apt (1.4.9)
+
+GIT
+  remote: https://github.com/opscode-cookbooks/build-essential.git
+  ref: master
+  sha: 973f97efc279780c0f3de027bb020a1615a9f84d
+  specs:
+    build-essential (1.1.2)
+
+GIT
+  remote: https://github.com/phlipper/chef-postgresql.git
+  ref: master
+  sha: f9fb4099f0d1fc40239a7a60d3ff9e0aee06f885
+  specs:
+    postgresql (0.5.0)
+
+DEPENDENCIES
+  apt (>= 0)
+  build-essential (>= 0)
+  nginx (>= 0)
+  postgresql (>= 0)
+  redis (>= 0)
+

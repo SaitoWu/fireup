@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+#^syntax detection
+
+site 'http://community.opscode.com/api/v1'
+
+cookbook 'apt',
+  :git => 'https://github.com/opscode-cookbooks/apt.git'
+
+cookbook 'build-essential',
+  :git => 'https://github.com/opscode-cookbooks/build-essential.git'
+
+cookbook 'nginx',
+  :git => 'https://github.com/gchef/nginx-cookbook.git'
+
+cookbook 'redis',
+  :git => 'https://github.com/ctrabold/chef-redis.git'
+
+cookbook 'postgresql',
+  :git => 'https://github.com/phlipper/chef-postgresql.git'
