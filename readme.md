@@ -2,7 +2,7 @@
 
 FireUp use puppet to deploy ur ruby/rails code to VPS.
 
-It contains `rvm`, `ruby`, `unicorn`, `mysql` and `nginx` recipes.
+It contains `postgresql`, `redis` and `nginx` recipes.
 
 ## How to use FireUp
 
@@ -11,32 +11,10 @@ It contains `rvm`, `ruby`, `unicorn`, `mysql` and `nginx` recipes.
 ```bash
 git clone git://github.com/SaitoWu/fireup.git
 cd fireup
-git submodule update --init
-
-# edit example variables
-vim manifests/base.pp
+gem install librarian
+librarian-chef init
 vagrant up
 ```
-
-### VPS
-
-```bash
-apt-get install git-core
-git clone git://github.com/SaitoWu/fireup.git
-cd fireup
-git submodule update --init
-./install.sh
-
-# edit example variables
-nano manifests/base.pp
-puppet apply --modulepath 'manifests/modules' manifests/base.pp
-```
-
-## NOTICE
-
-The current puppet(v2.7.x) is not compatibility with ruby 1.9.3.
-
-The best version is ruby 1.8.7.
 
 ## THANKS
 
