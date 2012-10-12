@@ -12,7 +12,7 @@ It contains `postgresql`, `redis` and `nginx` recipes.
 git clone git://github.com/SaitoWu/fireup.git
 cd fireup
 gem install librarian
-librarian-chef init
+librarian-chef install
 vagrant up
 ```
 
